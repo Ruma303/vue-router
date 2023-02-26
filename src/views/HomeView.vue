@@ -1,18 +1,37 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>All Destinations</h1>
+
+    <div class="all-destinations"
+    v-for="destination in destinations" 
+    :key="destination.name">
+
+      <router-link :to="{name: 'DestinationDetails', params: {slug: destination.slug}}">
+        <h4>{{ destination.name }}</h4>
+        <figure>
+          <img :src="require(`@/assets/${destination.image}`)" 
+          :alt="destination.name">
+        </figure>
+      </router-link>
+      
+    </div>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import router from "@/router/router.js";
+import store from "@/store.js"
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    HelloWorld
+    router
+},
+  data() {
+    return {
+      destinations: store.destinations,
+    }
   }
-}
+};
 </script>
