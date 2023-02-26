@@ -1,5 +1,6 @@
 <template>
   <div>
+    <GoBack />
     <section>
       <h1>{{ destination.name }}</h1> 
       <img :src="require(`@/assets/${destination.image}`)" :alt="destination.name">
@@ -32,8 +33,13 @@
 </template>
 
 <script>
+/* eslint-disable *//* eslint-disable */
 import store from '@/store.js';
+import GoBack from '@/components/GoBack.vue';
 export default {
+  components:{
+    GoBack
+  },  
   data(){
     return{};
   },
